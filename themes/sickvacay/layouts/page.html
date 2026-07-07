@@ -1,0 +1,15 @@
+{{ define "main" }}
+
+<article class="post-article">
+    <h1>{{ .Title }}</h1>
+    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman := .Date | time.Format ":date_long" }}
+    <section class="post-article__meta">
+        <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+        <span> • </span>
+        {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+    </section>
+    <section class="post-article__content">{{ .Content }}</section>
+</article>
+
+{{ end }}

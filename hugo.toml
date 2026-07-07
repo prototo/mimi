@@ -1,0 +1,17 @@
+baseURL = 'https://amymackelden.com/'
+locale = 'en-us'
+title = 'Disability, Horror, & Pop Culture'
+theme = 'sickvacay'
+
+[params.logo]
+src = '/images/logo.webp'
+alt = 'Amy Mackelden'
+
+[markup.goldmark.parser.attribute]
+  block = true
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[taxonomies]
+tag = 'tags'

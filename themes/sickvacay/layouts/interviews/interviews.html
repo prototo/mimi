@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <article class="interviews-page">
+    {{ with .Params.feature_links }}
+      <section class="interviews-grid" aria-label="Featured interview links">
+        {{ range . }}
+          <a class="interviews-card {{ .span }}" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            <img src="{{ .image }}" alt="{{ with .alt }}{{ . }}{{ else }}{{ .title }}{{ end }}" loading="lazy">
+          </a>
+        {{ end }}
+      </section>
+    {{ end }}
+  </article>
+{{ end }}

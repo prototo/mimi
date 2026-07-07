@@ -1,0 +1,15 @@
+<a href="{{ site.Home.RelPermalink }}">Amy Mackelden</a>
+{{ $logo := site.Params.logo }}
+<a class="site-header__brand" href="{{ site.Home.RelPermalink }}">
+    {{ with $logo }}
+        <img
+            src="{{ .src | relURL }}"
+            alt="{{ .alt | default site.Title }}"
+        >
+    {{ else }}
+        {{ site.Title }}
+    {{ end }}
+</a>
+<div class="site-header__nav">
+    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+</div>

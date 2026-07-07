@@ -1,0 +1,48 @@
+{{ define "main" }}
+  <!-- {{ .Content }} -->
+
+  <article class="home-posts" aria-label="Latest posts">
+    {{ range (where site.RegularPages "Section" "posts").ByDate.Reverse }}
+      {{ $page := . }}
+      {{ $image := "" }}
+      {{ with .Params.featured_image }}
+        {{ with $page.Resources.GetMatch . }}
+          {{ $image = .RelPermalink }}
+        {{ else }}
+          {{ $image = . }}
+        {{ end }}
+      {{ end }}
+      {{ if not $image }}
+        {{ with .Resources.GetMatch "{cover,featured,hero,thumbnail}*" }}
+          {{ $image = .RelPermalink }}
+        {{ end }}
+      {{ end }}
+      {{ if not $image }}
+        {{ with index (.Resources.ByType "image") 0 }}
+          {{ $image = .RelPermalink }}
+        {{ end }}
+      {{ end }}
+
+      <section class="home-post-card">
+        {{ if $image }}
+          <a class="home-post-card__media" href="{{ .RelPermalink }}" aria-label="Read {{ .LinkTitle }}">
+            <img src="{{ $image }}" alt="{{ .LinkTitle }}">
+          </a>
+        {{ end }}
+
+        <div>
+          <h2 class="home-post-card__title">
+            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+          </h2>
+          <div class="home-post-card__meta">
+            <time datetime="{{ .Date | time.Format "2006-01-02" }}">{{ .Date | time.Format "January 2, 2006" }}</time>
+            {{ with .GetTerms "tags" }}
+              <span> • </span>
+              {{ partial "terms.html" (dict "taxonomy" "tags" "page" $page) }}
+            {{ end }}
+          </div>
+        </div>
+      </section>
+    {{ end }}
+    </article>
+{{ end }}
