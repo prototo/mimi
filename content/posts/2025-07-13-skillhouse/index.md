@@ -1,7 +1,7 @@
 +++
 title = "Josh Stolberg on 'Skillhouse,' His Favorite Movie Kills, and Working With Tobin Bell on the 'Saw' Franchise"
 date = 2025-07-13T12:00:00+00:00
-draft = true
+draft = false
 featured_image = "new+josh+foot.webp"
 tags = ["Movies", "Horror", "Saw"]
 +++

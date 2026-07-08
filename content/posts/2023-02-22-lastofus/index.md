@@ -1,7 +1,7 @@
 +++
 title = "'The Last of Us' Is Killing Me"
 date = 2023-02-22T12:00:00+00:00
-draft = true
+draft = false
 featured_image = "last+of+us+disabled+2.webp"
 tags = ["TV", "Disability", "Ableism"]
 +++
